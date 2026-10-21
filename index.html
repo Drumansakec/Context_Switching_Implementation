@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Switching Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <div>
+                <h1>Context Switching Simulator</h1>
+                <p>Operating System • Round Robin Scheduling</p>
+            </div>
+            <div class="badge">SLA Review 3</div>
+        </header>
+
+        <section class="card">
+            <h2>1. Simulation Input</h2>
+
+            <div class="grid">
+                <label>
+                    Time Quantum
+                    <input id="quantum" type="number" min="1" value="2">
+                </label>
+
+                <label>
+                    Context-Switch Overhead
+                    <input id="overhead" type="number" min="0" step="0.1" value="0.5">
+                </label>
+            </div>
+
+            <table id="processTable">
+                <thead>
+                    <tr>
+                        <th>Process ID</th>
+                        <th>Arrival Time</th>
+                        <th>CPU Burst Time</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div class="actions">
+                <button id="addBtn">+ Add Process</button>
+                <button id="simulateBtn">Run Simulation</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+
+            <p class="hint">
+                Enter non-negative arrival times and positive burst times.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>2. Context Switching</h2>
+
+            <div class="stats">
+                <div>
+                    <span>Current Process</span>
+                    <strong id="currentProcess">—</strong>
+                </div>
+
+                <div>
+                    <span>Switch Count</span>
+                    <strong id="switchCount">0</strong>
+                </div>
+
+                <div>
+                    <span>Switch Overhead</span>
+                    <strong id="switchOverhead">0</strong>
+                </div>
+            </div>
+
+            <div class="queue" id="queueView">
+                Ready Queue: —
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Process Information</h2>
+
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>PID</th>
+                        <th>Arrival</th>
+                        <th>Burst</th>
+                        <th>Completion</th>
+                        <th>Waiting</th>
+                        <th>Turnaround</th>
+                        <th>Response</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>4. Gantt Chart</h2>
+            <div id="gantt" class="gantt"></div>
+        </section>
+
+        <section class="card">
+            <h2>5. Overall Statistics</h2>
+
+            <div class="stats">
+                <div>
+                    <span>Total Execution Time</span>
+                    <strong id="totalTime">0</strong>
+                </div>
+
+                <div>
+                    <span>CPU Busy Time</span>
+                    <strong id="busyTime">0</strong>
+                </div>
+
+                <div>
+                    <span>Average Waiting</span>
+                    <strong id="avgWait">0</strong>
+                </div>
+
+                <div>
+                    <span>Average Turnaround</span>
+                    <strong id="avgTurn">0</strong>
+                </div>
+
+                <div>
+                    <span>Average Response</span>
+                    <strong id="avgResp">0</strong>
+                </div>
+
+                <div>
+                    <span>CPU Utilization</span>
+                    <strong id="util">0%</strong>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
